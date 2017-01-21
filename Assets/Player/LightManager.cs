@@ -8,6 +8,8 @@ public class LightManager : MonoBehaviour {
 	public GameObject lights;
 	public GameObject lightsingame;
 	public GameObject gl;
+	public bool lig;
+	public bool once;
 	public bool lightsdone = false;
 	public float counter;
 	public float lighttiming;
@@ -41,19 +43,32 @@ public class LightManager : MonoBehaviour {
 		{
 			
 		}
+		if (lig == true) 
+		{
+			lightsingame = GameObject.FindGameObjectWithTag("ClonedLight");
+			lightsingame.GetComponent<LightsOn> ().lightswitch = true;
+			lig = false;
+		}
 
 	}
 	void OnCollisionEnter2D(Collision2D other)
 	{
 
-		if (other.gameObject.tag == "Platform") 
+		if (other.gameObject.tag == "Platform" && !once) 
 		{
+			once = true;
 			Debug.Log ("suka");
 			gl =  Instantiate(lights, transform.position, Quaternion.identity) as GameObject;
 			gl.transform.parent = this.transform;
-			lightsingame = GameObject.FindGameObjectWithTag("ClonedLight");
-			lightsingame.GetComponent<LightsOn> ().lightswitch = true;
+			lig = true;
 		}
 
-	} 
+	}
+	void OnCollisionExit2D(Collision2D other2)
+	{
+		if (other2.gameObject.tag == "Platform" && once) 
+		{
+			once = false;
+		}
+	}
 }

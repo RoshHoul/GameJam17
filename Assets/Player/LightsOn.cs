@@ -4,7 +4,7 @@ using UnityEngine;
 public class LightsOn : MonoBehaviour {
 
 	public GameObject[] lights;
-	public GameObject light;
+	public GameObject thelight;
 	public GameObject curLight;
 	private GameObject me;
 	public bool lightswitch = false;
@@ -52,7 +52,7 @@ public class LightsOn : MonoBehaviour {
 	{
 			Debug.Log ("suka");
 			lightswitch = false;
-			InvokeRepeating ("coinlights", 0f, 0.01f);
+			InvokeRepeating ("coinlights", 0f, 1f);
 
 	}
 
@@ -95,6 +95,7 @@ public class LightsOn : MonoBehaviour {
 				if(coin.GetComponent<LightManager> ().lightcount == 4 || coin.GetComponent<LightManager> ().counter == 4)
 					{
 						coin.GetComponent<LightManager> ().lightsdone = false;
+						coin.GetComponent<LightManager> ().once = false;
 					}
 				coin.GetComponent<LightManager> ().lightcount += 1;
 				Destroy (this.gameObject);
