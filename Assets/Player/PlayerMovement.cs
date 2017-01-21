@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool holdCoin = true;
     public float speed = 5f;
     private Rigidbody2D rb;
-    private bool onFloor;
+    public bool onFloor;
     public Animator CharacterAnims;
     private float distance;
     public GameObject coin;
