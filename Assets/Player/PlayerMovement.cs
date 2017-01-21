@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject coin;
     public float jumpStrength;
 
+
     // Use this for initialization
     void Start()
     {
@@ -49,13 +50,6 @@ public class PlayerMovement : MonoBehaviour {
             CharacterAnims.SetInteger("States", 2);
         }
 
-        distance = Vector3.Distance(transform.position, coin.transform.position);
-        Debug.Log(distance);
-        if (distance < 10f)
-        {
-            Debug.Log("MONEY");
-        }
-
         if (Input.GetKey(KeyCode.Space))
         {   
             if (onFloor) 
@@ -66,10 +60,12 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
+
         if (other.gameObject.tag == "Platform")
         {
             onFloor = false;
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -80,5 +76,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
         }
+
+
     }
 }
