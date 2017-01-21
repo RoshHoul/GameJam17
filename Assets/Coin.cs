@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
-    Transform myTarget;
-    GameObject coin;
-    float shootAngle = 30f;
+    public Transform myTarget;
+    
+    public GameObject coin;
+    float shootAngle = 45f;
     Rigidbody2D rb;
 
 	// Use this for initialization
@@ -15,11 +16,14 @@ public class Coin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.LeftShift))
+        
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
-            rb = GetComponent<Rigidbody2D>();
+            rb = curCoin.GetComponent<Rigidbody2D>();
             rb.velocity = BallisticVel(myTarget, shootAngle);
+            Destroy(curCoin, 3);
         }
 	}
 
