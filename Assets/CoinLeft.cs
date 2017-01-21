@@ -10,6 +10,7 @@ public class CoinLeft : MonoBehaviour {
     public GameObject lighting;
     public GameObject coin;
     float shootAngle = 45f;
+    private float distance;
     Rigidbody2D rb;
 
     // Use this for initialization
@@ -21,16 +22,18 @@ public class CoinLeft : MonoBehaviour {
     void Update()
     {
 
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (myTarget.position.x < player.transform.position.x)
+            if (player.GetComponent<PlayerMovement>().holdCoin)
             {
+                if (myTarget.position.x < player.transform.position.x)
+                {
 
-                GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
-                rb = curCoin.GetComponent<Rigidbody2D>();
-                rb.velocity = BallisticVel(myTarget, shootAngle);
-                Destroy(curCoin, 3);
+                    GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
+                    rb = curCoin.GetComponent<Rigidbody2D>();
+                    rb.velocity = BallisticVel(myTarget, shootAngle);
+//                    Destroy(curCoin, 3);
+                }
             }
         }
     }

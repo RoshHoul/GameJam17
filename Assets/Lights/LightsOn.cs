@@ -28,7 +28,7 @@ public class LightsOn : MonoBehaviour {
 			for (int i = 0; i < 5; i++) {
 
                 counter += Time.deltaTime;
-                if (counter >= 0.1f) {
+                if (counter >= 0.3f) {
                     Debug.Log("first 4");
 					lights [i].SetActive (true);
 //					i++;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
+
     public GameObject player;
     public Transform myTarget;
     public Transform lightPos;
@@ -22,15 +23,18 @@ public class Coin : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (myTarget.position.x > player.transform.position.x)
+            if (player.GetComponent<PlayerMovement>().holdCoin)
             {
+                if (myTarget.position.x > player.transform.position.x)
+                {
 
-            GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
-            rb = curCoin.GetComponent<Rigidbody2D>();
-            rb.velocity = BallisticVel(myTarget, shootAngle);
-            Destroy(curCoin, 3);
+                    GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
+                    rb = curCoin.GetComponent<Rigidbody2D>();
+                    rb.velocity = BallisticVel(myTarget, shootAngle);
+                    player.GetComponent<PlayerMovement>().holdCoin = false;
+                    //           Destroy(curCoin, 3);
+                }
             }
-
         }
     }
 

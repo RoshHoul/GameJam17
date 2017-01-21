@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public bool holdCoin = true;
     public float speed = 5f;
     private Rigidbody2D rb;
     private bool onFloor;
     public Animator CharacterAnims;
+    private float distance;
+    public GameObject coin;
 
     // Use this for initialization
     void Start()
@@ -41,11 +44,17 @@ public class PlayerMovement : MonoBehaviour {
         {
             CharacterAnims.SetInteger("States", 0);
         }
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && holdCoin)
         {
             CharacterAnims.SetInteger("States", 2);
         }
 
+        distance = Vector3.Distance(transform.position, coin.transform.position);
+        Debug.Log(distance);
+        if (distance < 10f)
+        {
+            Debug.Log("MONEY");
+        }
 
         if (Input.GetKey(KeyCode.Space))
         {   
