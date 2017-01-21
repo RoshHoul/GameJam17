@@ -4,7 +4,10 @@ using UnityEngine;
 public class LightsOn : MonoBehaviour {
 
 	public GameObject[] lights;
+	public GameObject light;
+	public GameObject curLight;
 	private GameObject me;
+	public bool lightswitch = false;
 	public int lightnum = 0;
 	public int countlights = 0;
 	public float counter;
@@ -38,32 +41,22 @@ public class LightsOn : MonoBehaviour {
 			clonelights ();
 		}
 
-
-		/*if (for2on == true) {
-			for (int j = 4; j >= 0; j--) {
-				if (counter2 >= 3f) {
-
-					lights [lightnum2].SetActive (false);
-					if (lightnum2 == 0) {
-						lightnum2 = 0;
-						for2on = false;
-					}
-					lightnum2--;
-					counter = 0;
-				}
-			}
-		} */
+		if (lightswitch == true) 
+		{
+			spawnlights ();
+			lightswitch = false;
+		}
 	}
 
-	void OnCollisionEnter2D(Collision2D other)
+	void spawnlights ()
 	{
-
-		if (other.gameObject.tag == "Platform") 
-		{
+			Debug.Log ("suka");
+			lightswitch = false;
 			InvokeRepeating ("coinlights", 0f, 0.01f);
-		}
 
-	} 
+	}
+
+
 	void clonelights()
 	{
 		InvokeRepeating("coinlights", 0f,1f);

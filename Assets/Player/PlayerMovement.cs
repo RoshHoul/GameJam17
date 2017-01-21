@@ -89,7 +89,9 @@ public class PlayerMovement : MonoBehaviour {
             onFloor = true;
         if (other.gameObject.tag == "Jumper")
         {
-            rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+			Debug.Log ("Jumper Hit");
+		//	gameObject.transform.Translate (-12, 14, 0);
+            rb.AddForce(new Vector2(0, 20), ForceMode2D.Impulse);
         }
 
 
