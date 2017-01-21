@@ -40,5 +40,9 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (other.gameObject.tag == "Platform")
             onFloor = true;
+        if (other.gameObject.tag == "Jumper")
+        {
+            rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+        }
     }
 }
