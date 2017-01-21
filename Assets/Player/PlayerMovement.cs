@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour {
     private float distance;
     public GameObject coin;
     public float jumpStrength;
+    private bool isIdle = true;
 
 
     // Use this for initialization
@@ -33,27 +34,41 @@ public class PlayerMovement : MonoBehaviour {
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && onFloor == true)
         {
             CharacterAnims.SetInteger("States", 1);
+            isIdle = false;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) && onFloor == true)
         {
             CharacterAnims.SetInteger("States", 1);
+            isIdle = false;
+        }
+        else if (onFloor == false)
+        {
+            CharacterAnims.SetInteger("States", 3);
+            isIdle = false;
         }
         else
         {
             CharacterAnims.SetInteger("States", 0);
+            isIdle = true;
         }
-        if (Input.GetKey(KeyCode.Mouse0) && holdCoin)
+        if (Input.GetKey(KeyCode.Mouse0) && holdCoin && isIdle == false)
         {
             CharacterAnims.SetInteger("States", 2);
         }
+        else if (Input.GetKey(KeyCode.Mouse0) && holdCoin && isIdle == true)
+        {
+            CharacterAnims.SetInteger("States", 4);
+        }
+
 
         if (Input.GetKey(KeyCode.Space))
         {   
             if (onFloor) 
                 rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
+            CharacterAnims.SetInteger("States", 3);
         }
         
     }
