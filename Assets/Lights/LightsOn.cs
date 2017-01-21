@@ -8,10 +8,8 @@ public class LightsOn : MonoBehaviour {
     public int lightnum = 0;
     public float counter;
     public float counter2;
-    public bool count1;
-    public bool count2;
-    public bool forstop = true;
-    public bool for2stop = false;
+	public bool for1on = true;
+	public bool for2on = false;
     // Use this for initialization
     void Start()
     {
@@ -24,29 +22,49 @@ public class LightsOn : MonoBehaviour {
     }
     // Update is called once per frame
     void Update()
-    {
-/*        for (int i = 0; i <= 5; i++) {
-            Debug.Log("this is the" + i + " time");
-            counter += Time.deltaTime;
-            if (counter >= 0.3f) {
+	{
+		counter += Time.deltaTime;
+		counter2 += Time.deltaTime;
+		if (for1on == true) {
+			for (int i = 0; i <= 4; i++) {
+            
+				if (counter >= 0.05f) {
 
-                lights[i].SetActive(true);
-                counter = 0;
-            }
+					lights [lightnum].SetActive (true);
+					lightnum++;
+					counter = 0;
+				}
+				if (lightnum == 5) {
+					lightnum = 6;
+				}
+				if (lightnum == 6) {
+					lightnum = 6;
+					for2on = true;
+					for1on = false;
+				}
+
+			}
 
 
 
 
-        }
-        for (int j = 5; j >= 5; j--) {
+		}
+		if (for2on == true) {
+			for (int j = 4; j >= 0; j--) {
+				if (counter2 >= 0.05f) {
 
-            counter2 = counter2 + Time.deltaTime;
-            if (counter2 >= 2f) {
-                lights[j].SetActive(false);
-                counter2 = 0;
-                //					forstop = false;
-            }
-        } */
-    } 
+					lights [lightnum].SetActive (false);
+					lightnum--;
+					counter = 0;
+				}
+				if (lightnum == 0) {
+					lightnum = 0;
+					for2on = false;
+				}
 
-}
+				}
+
+			}
+		} 
+	}
+
