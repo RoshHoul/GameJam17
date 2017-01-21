@@ -27,12 +27,13 @@ public class PlayerMovement : MonoBehaviour {
         else if (val > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             CharacterAnims.SetInteger("States", 1);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A))
         {
             CharacterAnims.SetInteger("States", 1);
         }
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             CharacterAnims.SetInteger("States", 0);
         }
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             CharacterAnims.SetInteger("States", 2);
         }

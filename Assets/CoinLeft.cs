@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour {
+public class CoinLeft : MonoBehaviour {
 
     public GameObject player;
     public Transform myTarget;
@@ -12,29 +12,30 @@ public class Coin : MonoBehaviour {
     float shootAngle = 45f;
     Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
- 	}
-	
-	// Update is called once per frame
-	void Update () {
-        
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (myTarget.position.x > player.transform.position.x)
+            if (myTarget.position.x < player.transform.position.x)
             {
 
-            GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
-            rb = curCoin.GetComponent<Rigidbody2D>();
-            rb.velocity = BallisticVel(myTarget, shootAngle);
-            Destroy(curCoin, 3);
+                GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
+                rb = curCoin.GetComponent<Rigidbody2D>();
+                rb.velocity = BallisticVel(myTarget, shootAngle);
+                Destroy(curCoin, 3);
             }
-
         }
     }
 
-    void OnCollisionEnter2D( Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Basi");
     }
@@ -53,5 +54,4 @@ public class Coin : MonoBehaviour {
         return vel * dir.normalized;
     }
 
-    
 }

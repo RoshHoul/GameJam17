@@ -23,32 +23,20 @@ public class LightsOn : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		counter += Time.deltaTime;
 		counter2 += Time.deltaTime;
 		if (for1on == true) {
-			for (int i = 0; i <= 4; i++) {
+			for (int i = 0; i < 5; i++) {
 
-				if (counter >= 0.05f) {
-
-					lights [lightnum].SetActive (true);
-					lightnum++;
+                counter += Time.deltaTime;
+                if (counter >= 0.1f) {
+                    Debug.Log("first 4");
+					lights [i].SetActive (true);
+//					i++;
 					counter = 0;
-				}
-				if (lightnum == 5) {
-					lightnum = 6;
-				}
-				if (lightnum == 6) {
-					lightnum = 6;
-					for2on = true;
-					for1on = false;
 				}
 
 			}
-
-
-
-
-		}
+		} /*
 		if (for2on == true) {
 			for (int j = 4; j >= 0; j--) {
 				if (counter2 >= 3f) {
@@ -61,11 +49,13 @@ public class LightsOn : MonoBehaviour {
 					lightnum2--;
 					counter = 0;
 				}
-
-
 			}
+		} */
+	}
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
 
-		}
-	} 
+    } 
 }
 
