@@ -19,7 +19,8 @@ public class BearTrap : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (GameObject.FindGameObjectWithTag("Player"))
+		
+		if(col.gameObject.tag == "Player")
 		{
 			Snap.SetInteger ("States", 1);
 			Player.GetComponent<PlayerMovement> ().enabled = false;

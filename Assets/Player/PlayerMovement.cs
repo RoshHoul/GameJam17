@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour {
         else if (val > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
-
         }
         if (Input.GetKey(KeyCode.D))
         {
