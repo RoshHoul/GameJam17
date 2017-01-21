@@ -6,6 +6,7 @@ public class LightsOn : MonoBehaviour {
 
     public GameObject[] lights;
     public int lightnum = 0;
+	public int lightnum2 = 4;
     public float counter;
     public float counter2;
 	public bool for1on = true;
@@ -51,16 +52,17 @@ public class LightsOn : MonoBehaviour {
 		}
 		if (for2on == true) {
 			for (int j = 4; j >= 0; j--) {
-				if (counter2 >= 0.05f) {
+				if (counter2 >= 3f) {
 
-					lights [lightnum].SetActive (false);
-					lightnum--;
+					lights [lightnum2].SetActive (false);
+					if (lightnum2 == 0) {
+						lightnum2 = 0;
+						for2on = false;
+					}
+					lightnum2--;
 					counter = 0;
 				}
-				if (lightnum == 0) {
-					lightnum = 0;
-					for2on = false;
-				}
+
 
 				}
 
