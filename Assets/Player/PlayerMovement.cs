@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
     private Rigidbody2D rb;
     private bool onFloor;
+    public Animator CharacterAnims;
 
     // Use this for initialization
     void Start()
@@ -19,6 +20,31 @@ public class PlayerMovement : MonoBehaviour {
     {
         var val = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(speed * val, rb.velocity.y);
+        if (val < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (val > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            CharacterAnims.SetInteger("States", 1);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            CharacterAnims.SetInteger("States", 1);
+        }
+        else
+        {
+            CharacterAnims.SetInteger("States", 0);
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            CharacterAnims.SetInteger("States", 2);
+        }
+
 
         if (Input.GetKey(KeyCode.Space))
         {   
