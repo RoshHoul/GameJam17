@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     public Animator CharacterAnims;
     private float distance;
     public GameObject coin;
+    public float jumpStrength;
 
     // Use this for initialization
     void Start()
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {   
             if (onFloor) 
-                rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
         }
         
     }
