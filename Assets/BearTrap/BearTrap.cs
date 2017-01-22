@@ -6,6 +6,7 @@ public class BearTrap : MonoBehaviour {
 	public Animator Snap;
 	public GameObject Player;
 	public GameObject EndScreen;
+    public static int deathCount = 0;
 
 	// Use this for initialization
 	void Start () {

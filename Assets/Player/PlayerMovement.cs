@@ -8,17 +8,19 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
     private Rigidbody2D rb;
     public bool onFloor;
-    public Animator CharacterAnims;
+    public Animator CharacterAnims; 
     private float distance;
     public GameObject coin;
     public float jumpStrength;
     private bool isIdle = true;
+    public static Vector3 lastPosition;
 
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
@@ -69,6 +71,12 @@ public class PlayerMovement : MonoBehaviour {
             if (onFloor) 
                 rb.AddForce(new Vector2(0, jumpStrength), ForceMode2D.Impulse);
             CharacterAnims.SetInteger("States", 3);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("Position saved");
+            lastPosition = gameObject.transform.position;
         }
         
     }
