@@ -32,7 +32,8 @@ public class CoinLeft : MonoBehaviour {
                     GameObject curCoin = Instantiate(coin, transform.position, Quaternion.identity);
                     rb = curCoin.GetComponent<Rigidbody2D>();
                     rb.velocity = BallisticVel(myTarget, shootAngle);
-//                    Destroy(curCoin, 3);
+                    player.GetComponent<PlayerMovement>().holdCoin = false;
+                    //                    Destroy(curCoin, 3);
                 }
             }
         }

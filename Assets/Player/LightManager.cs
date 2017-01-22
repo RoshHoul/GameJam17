@@ -61,6 +61,7 @@ public class LightManager : MonoBehaviour {
 			gl =  Instantiate(lights, transform.position, Quaternion.identity) as GameObject;
 			gl.transform.parent = this.transform;
 			lig = true;
+            GetComponent<Rigidbody2D>().isKinematic = true;
 		}
 
 	}
