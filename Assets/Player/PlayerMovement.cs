@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour {
         }
         else
         {
-            CharacterAnims.SetInteger("States", 0);
+			CharacterAnims.SetInteger("States", 0);
             isIdle = true;
         }
         if (Input.GetKey(KeyCode.Mouse0) && holdCoin && isIdle == false)

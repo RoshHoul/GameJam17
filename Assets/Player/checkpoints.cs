@@ -22,5 +22,9 @@ public class checkpoints : MonoBehaviour {
         EndScreen.SetActive(false);
         player.SetActive(true);
     }
+	public void quit()
+	{
+		Application.Quit ();
+	}
         
 }
